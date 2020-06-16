@@ -29,5 +29,5 @@ export default ({ navigation }) => {
   useEffect(() => {
     getData();
   }, []);
-  return <MoviesPresenter />;
+  return <MoviesPresenter {...movies} />;
 };
