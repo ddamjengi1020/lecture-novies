@@ -10,6 +10,7 @@ export default () => (
     screenOptions={{
       headerStyle: { backgroundColor: "black", borderBottomColor: "black" },
       headerTintColor: "white",
+      headerTitleAlign: "center",
     }}
   >
     <Stack.Screen name="Tabs" component={Tabs} />

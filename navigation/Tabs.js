@@ -10,6 +10,7 @@ import { Platform } from "react-native";
 const Tab = createBottomTabNavigator();
 const getRouteTitle = (route) =>
   route?.state?.routeNames[route.state.index] || "Movies";
+
 export default ({ navigation, route }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
