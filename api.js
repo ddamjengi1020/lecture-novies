@@ -31,7 +31,7 @@ export const movieApi = {
 
 export const tvShowApi = {
   today: () => getAnything("/tv/airing_today"),
-  thisWeek: () => getAnything(),
+  thisWeek: () => getAnything("/tv/on_the_air"),
   topRated: () => getAnything("/tv/top_rated"),
   popular: () => getAnything("/tv/popular"),
   search: (query) => getAnything("/search/tv", { query }),

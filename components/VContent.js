@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
+import { TouchableOpacity } from "react-native";
+import { trimText } from "../utils";
 import Poster from "./Poster";
 import Vote from "./Vote";
-import { TouchableOpacity } from "react-native";
 
 const Container = styled.View`
-  margin-horizontal: 7px;
-  flex: 1;
-  justify-content: center;
+  margin-right: 14px;
   align-items: center;
 `;
 const Title = styled.Text`
@@ -16,17 +15,18 @@ const Title = styled.Text`
   margin-vertical: 5px;
 `;
 
-const VContent = ({ poster, title, vote }) => (
-  <Container>
-    <TouchableOpacity>
+const VContent = ({ id, poster, title, vote }) => (
+  <TouchableOpacity>
+    <Container>
       <Poster url={poster} />
-      <Title>{title.length > 8 ? `${title.slice(0, 8)}...` : title}</Title>
+      <Title>{trimText(title, 8)}</Title>
       <Vote vote={vote} />
-    </TouchableOpacity>
-  </Container>
+    </Container>
+  </TouchableOpacity>
 );
 
 VContent.propTypes = {
+  id: PropTypes.number.isRequired,
   poster: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   vote: PropTypes.number.isRequired,

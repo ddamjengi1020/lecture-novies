@@ -3,15 +3,16 @@ import PropTypes from "prop-types";
 import styled from "styled-components/native";
 import { Dimensions } from "react-native";
 import { apiImage } from "../../api";
-import Poster from "../Poster";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { trimText } from "../../utils";
+import Poster from "../Poster";
 import Vote from "../Vote";
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
+const { height: HEIGHT } = Dimensions.get("window");
 
 const Container = styled.View`
   position: relative;
-  width: ${WIDTH};
+  width: 100%;
   height: ${HEIGHT / 4};
 `;
 const BgImage = styled.Image`
@@ -61,13 +62,9 @@ const Slide = ({ id, title, backgroundImage, vote, overview, poster }) => {
       <Content>
         <Poster url={poster} />
         <Data>
-          <Title>
-            {title.length > 14 ? `${title.slice(0, 12)}...` : title}
-          </Title>
+          <Title>{trimText(title, 13)}</Title>
           <Vote vote={vote} />
-          <Overview>
-            {overview.length > 70 ? `${overview.slice(0, 70)}...` : overview}
-          </Overview>
+          <Overview>{trimText(overview, 70)}</Overview>
           <TouchableOpacity>
             <Button>
               <ButtonText>더보기</ButtonText>
