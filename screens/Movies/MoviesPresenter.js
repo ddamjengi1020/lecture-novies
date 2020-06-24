@@ -20,52 +20,54 @@ const SectionContainer = styled.View`
 
 export default ({ loading, nowPlaying, popular, upcoming }) => (
   <Loaded loading={loading}>
-    <SliderContainer>
-      <Swiper loop={true} timeout={4} controlsEnabled={false}>
-        {nowPlaying
-          .filter((movie) => movie.overview !== "")
-          .map((movie) => (
-            <Slide
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <SliderContainer>
+        <Swiper loop={true} timeout={4} controlsEnabled={false}>
+          {nowPlaying
+            .filter((movie) => movie.overview !== "")
+            .map((movie) => (
+              <Slide
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                vote={movie.vote_average}
+                overview={movie.overview}
+                backgroundImage={movie.backdrop_path}
+                poster={movie.poster_path}
+              />
+            ))}
+        </Swiper>
+      </SliderContainer>
+      <SectionContainer>
+        <ContentsTitle title={"인기 영화"} />
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {popular.map((movie) => (
+            <VContent
               key={movie.id}
               id={movie.id}
               title={movie.title}
               vote={movie.vote_average}
-              overview={movie.overview}
-              backgroundImage={movie.backdrop_path}
               poster={movie.poster_path}
             />
           ))}
-      </Swiper>
-    </SliderContainer>
-    <SectionContainer>
-      <ContentsTitle title={"인기 영화"} />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {popular.map((movie) => (
-          <VContent
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            vote={movie.vote_average}
-            poster={movie.poster_path}
-          />
-        ))}
-      </ScrollView>
-    </SectionContainer>
-    <SectionContainer>
-      <ContentsTitle title={"개봉예정 영화"} />
-      {upcoming
-        .filter((movie) => movie.overview !== "")
-        .map((movie) => (
-          <HContent
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            vote={movie.vote_average}
-            poster={movie.poster_path}
-            overview={movie.overview}
-            releaseDate={movie.release_date}
-          />
-        ))}
-    </SectionContainer>
+        </ScrollView>
+      </SectionContainer>
+      <SectionContainer>
+        <ContentsTitle title={"개봉예정 영화"} />
+        {upcoming
+          .filter((movie) => movie.overview !== "")
+          .map((movie) => (
+            <HContent
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              vote={movie.vote_average}
+              poster={movie.poster_path}
+              overview={movie.overview}
+              releaseDate={movie.release_date}
+            />
+          ))}
+      </SectionContainer>
+    </ScrollView>
   </Loaded>
 );

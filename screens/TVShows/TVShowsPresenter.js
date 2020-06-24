@@ -12,69 +12,69 @@ const SectionContainer = styled.View`
 
 export default ({ loading, today, popular, thisWeek, topRated }) => (
   <Loaded loading={loading}>
-    <SectionContainer>
-      <ContentsTitle title={"오늘 방영 드라마"} />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {today.map((tv) => (
-          <VContent
-            key={tv.id}
-            id={tv.id}
-            title={tv.name}
-            vote={tv.vote_average}
-            poster={tv.poster_path}
-          />
-        ))}
-      </ScrollView>
-    </SectionContainer>
-    <SectionContainer>
-      <ContentsTitle title={"인기 드라마"} />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {popular
-          .filter((tv) => tv.overview !== "")
-          .map((tv) => (
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <SectionContainer>
+        <ContentsTitle title={"오늘 방영 드라마"} />
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {today.map((tv) => (
             <VContent
               key={tv.id}
               id={tv.id}
               title={tv.name}
               vote={tv.vote_average}
               poster={tv.poster_path}
-              overview={tv.overview}
             />
           ))}
-      </ScrollView>
-    </SectionContainer>
-    <SectionContainer>
-      <ContentsTitle title={"이번 주 방영 드라마"} />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {thisWeek
+        </ScrollView>
+      </SectionContainer>
+      <SectionContainer>
+        <ContentsTitle title={"인기 드라마"} />
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {popular
+            .filter((tv) => tv.overview !== "")
+            .map((tv) => (
+              <VContent
+                key={tv.id}
+                id={tv.id}
+                title={tv.name}
+                vote={tv.vote_average}
+                poster={tv.poster_path}
+              />
+            ))}
+        </ScrollView>
+      </SectionContainer>
+      <SectionContainer>
+        <ContentsTitle title={"이번 주 방영 드라마"} />
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {thisWeek
+            .filter((tv) => tv.overview !== "")
+            .map((tv) => (
+              <VContent
+                key={tv.id}
+                id={tv.id}
+                title={tv.name}
+                vote={tv.vote_average}
+                poster={tv.poster_path}
+              />
+            ))}
+        </ScrollView>
+      </SectionContainer>
+      <SectionContainer>
+        <ContentsTitle title={"순위별 드라마"} />
+        {topRated
           .filter((tv) => tv.overview !== "")
           .map((tv) => (
-            <VContent
+            <HContent
               key={tv.id}
               id={tv.id}
               title={tv.name}
               vote={tv.vote_average}
               poster={tv.poster_path}
               overview={tv.overview}
+              releaseDate={tv.first_air_date}
             />
           ))}
-      </ScrollView>
-    </SectionContainer>
-    <SectionContainer>
-      <ContentsTitle title={"순위별 드라마"} />
-      {topRated
-        .filter((tv) => tv.overview !== "")
-        .map((tv) => (
-          <HContent
-            key={tv.id}
-            id={tv.id}
-            title={tv.name}
-            vote={tv.vote_average}
-            poster={tv.poster_path}
-            overview={tv.overview}
-            releaseDate={tv.first_air_date}
-          />
-        ))}
-    </SectionContainer>
+      </SectionContainer>
+    </ScrollView>
   </Loaded>
 );
