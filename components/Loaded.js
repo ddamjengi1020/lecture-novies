@@ -1,22 +1,39 @@
-import React from "react";
-import { ScrollView, ActivityIndicator } from "react-native";
+import React, { useState, useCallback } from "react";
+import { ScrollView, ActivityIndicator, RefreshControl } from "react-native";
 import PropTypes from "prop-types";
 
-const Loaded = ({ loading, children }) => (
-  <ScrollView
-    style={{ backgroundColor: "black" }}
-    contentContainerStyle={{
-      flex: 1,
-      justifyContent: loading ? "center" : "flex-start",
-    }}
-  >
-    {loading ? <ActivityIndicator color="white" size="small" /> : children}
-  </ScrollView>
-);
+const Loaded = ({ refreshFn, loading, children }) => {
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refreshFn();
+    setRefreshing(false);
+  };
+
+  return (
+    <ScrollView
+      style={{ backgroundColor: "black" }}
+      contentContainerStyle={{
+        flex: 1,
+        justifyContent: loading ? "center" : "flex-start",
+      }}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          tintColor={"white"}
+        />
+      }
+    >
+      {loading ? <ActivityIndicator color="white" size="small" /> : children}
+    </ScrollView>
+  );
+};
 
 Loaded.propTypes = {
   loading: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
+  refreshFn: PropTypes.func.isRequired,
 };
 
 export default Loaded;

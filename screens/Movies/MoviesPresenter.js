@@ -18,8 +18,8 @@ const SectionContainer = styled.View`
   padding: 20px;
 `;
 
-export default ({ loading, nowPlaying, popular, upcoming }) => (
-  <Loaded loading={loading}>
+export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
+  <Loaded loading={loading} refreshFn={refreshFn}>
     <ScrollView showsVerticalScrollIndicator={false}>
       <SliderContainer>
         <Swiper loop={true} timeout={4} controlsEnabled={false}>

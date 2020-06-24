@@ -6,11 +6,12 @@ Nomad Coders Lecture - React Native **Beginner** Course
 Using expo, web, ios, android, etc. are all compatible apps.  
 The movie data was taken from the'TMDB' API, and the api.js file has calling code.
 
-> Organize pages using React Navigation
+_Organize pages using React Navigation_
 
-    SCREENS
-    - [x] Movies
-    - [x] TVShows
-    - [x] Search
-    - [] Detail
-    - [] Discover
+> SCREENS
+
+- [x] Movies
+- [x] TVShows
+- [x] Search
+- [] Detail
+- [] Discover

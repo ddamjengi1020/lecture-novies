@@ -4,8 +4,8 @@ import styled from "styled-components/native";
 import { apiImage } from "../api";
 
 const PosterImage = styled.Image`
-  width: 14vh;
-  height: 20vh;
+  width: 80px;
+  height: 130px;
   border-radius: 5px;
 `;
 
@@ -14,7 +14,7 @@ const Poster = ({ url }) => {
 };
 
 Poster.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
 };
 
 export default Poster;

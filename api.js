@@ -38,4 +38,7 @@ export const tvShowApi = {
   tvShow: (id) => getAnything(`/tv/${id}`),
 };
 
-export const apiImage = (path) => `https://image.tmdb.org/t/p/w500${path}`;
+export const apiImage = (path) =>
+  path
+    ? `https://image.tmdb.org/t/p/w500${path}`
+    : "https://determined-hypatia-502a08.netlify.app/static/media/no-poster.25f2b569.png";

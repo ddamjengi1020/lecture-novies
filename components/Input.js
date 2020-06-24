@@ -1,20 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components/native";
+import { Platform } from "react-native";
 
 const TextInput = styled.TextInput`
   background-color: white;
+  border-radius: 10px;
+  width: 70%;
+  padding: 5px 10px;
+  font-size: 17px;
+  ${(props) => (props.platform ? "outline-width: 0" : "")};
 `;
 
-const Input = ({ placeholder, value, onChange, onSubmit }) => (
-  <TextInput
-    value={value}
-    onChangeText={onChange}
-    onSubmitEditing={onSubmit}
-    placeholder={placeholder}
-    returnKeyType={"search"}
-  />
-);
+const Input = ({ placeholder, value, onChange, onSubmit }) => {
+  return (
+    <TextInput
+      platform={Platform.OS === "web" ? 1 : 0}
+      value={value}
+      onChangeText={onChange}
+      onSubmitEditing={onSubmit}
+      placeholder={placeholder}
+      returnKeyType={"search"}
+    />
+  );
+};
 
 Input.propTypes = {
   placeholder: PropTypes.string.isRequired,

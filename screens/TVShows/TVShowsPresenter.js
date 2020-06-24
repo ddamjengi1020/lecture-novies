@@ -10,8 +10,8 @@ const SectionContainer = styled.View`
   padding: 20px;
 `;
 
-export default ({ loading, today, popular, thisWeek, topRated }) => (
-  <Loaded loading={loading}>
+export default ({ refreshFn, loading, today, popular, thisWeek, topRated }) => (
+  <Loaded loading={loading} refreshFn={refreshFn}>
     <ScrollView showsVerticalScrollIndicator={false}>
       <SectionContainer>
         <ContentsTitle title={"오늘 방영 드라마"} />

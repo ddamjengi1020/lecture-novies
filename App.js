@@ -23,7 +23,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
   const loadAssets = () => {
     const images = cacheImages([
-      "https://images.unsplash.com/photo-1590634331662-660d6992a9f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "https://determined-hypatia-502a08.netlify.app/static/media/no-poster.25f2b569.png",
     ]);
     const fonts = cacheFonts([Ionicons.font]);
     return Promise.all([...images, ...fonts]);

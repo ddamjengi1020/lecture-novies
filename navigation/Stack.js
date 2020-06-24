@@ -8,7 +8,11 @@ const Stack = createStackNavigator();
 export default () => (
   <Stack.Navigator
     screenOptions={{
-      headerStyle: { backgroundColor: "black", borderBottomColor: "black" },
+      headerStyle: {
+        backgroundColor: "black",
+        borderBottomColor: "black",
+        shadowOffset: { height: 0 },
+      },
       headerTintColor: "white",
       headerTitleAlign: "center",
     }}

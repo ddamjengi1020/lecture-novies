@@ -27,7 +27,7 @@ const VContent = ({ id, poster, title, vote }) => (
 
 VContent.propTypes = {
   id: PropTypes.number.isRequired,
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   title: PropTypes.string.isRequired,
   vote: PropTypes.number.isRequired,
 };
