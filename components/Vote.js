@@ -8,7 +8,7 @@ const VoteText = styled.Text`
   font-size: 11px;
 `;
 
-const Vote = ({ vote }) => <VoteText>⭐{vote} / 10</VoteText>;
+const Vote = ({ vote }) => <VoteText>⭐{vote ? vote : "-"} / 10</VoteText>;
 
 Vote.propTypes = {
   vote: PropTypes.number.isRequired,

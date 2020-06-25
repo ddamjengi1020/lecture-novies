@@ -12,7 +12,7 @@ const { height: HEIGHT } = Dimensions.get("window");
 
 const SliderContainer = styled.View`
   width: 100%;
-  height: ${HEIGHT / 4};
+  height: ${HEIGHT / 3.5};
 `;
 const SectionContainer = styled.View`
   padding: 20px;
@@ -34,6 +34,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
                 overview={movie.overview}
                 backgroundImage={movie.backdrop_path}
                 poster={movie.poster_path}
+                isMovie={true}
               />
             ))}
         </Swiper>
@@ -48,6 +49,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
               title={movie.title}
               vote={movie.vote_average}
               poster={movie.poster_path}
+              isMovie={true}
             />
           ))}
         </ScrollView>
@@ -65,6 +67,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
               poster={movie.poster_path}
               overview={movie.overview}
               releaseDate={movie.release_date}
+              isMovie={true}
             />
           ))}
       </SectionContainer>

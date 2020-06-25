@@ -15,12 +15,18 @@ const Title = styled.Text`
   margin-vertical: 5px;
 `;
 
-const VContent = ({ id, poster, title, vote }) => (
-  <GoToDetail id={id} poster={poster} title={title} vote={vote}>
+const VContent = ({ id, poster, title, vote, isMovie }) => (
+  <GoToDetail
+    id={id}
+    poster={poster}
+    title={title}
+    vote={vote}
+    isMovie={isMovie}
+  >
     <Container>
       <Poster url={poster} />
-      <Title>{trimText(title, 8)}</Title>
-      <Vote vote={vote} />
+      <Title>{trimText(title, 6)}</Title>
+      {vote && <Vote vote={vote} />}
     </Container>
   </GoToDetail>
 );
@@ -29,7 +35,8 @@ VContent.propTypes = {
   id: PropTypes.number.isRequired,
   poster: PropTypes.string,
   title: PropTypes.string.isRequired,
-  vote: PropTypes.number.isRequired,
+  vote: PropTypes.number,
+  isMovie: PropTypes.bool,
 };
 
 export default VContent;

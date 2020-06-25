@@ -51,6 +51,7 @@ export default ({ loading, movies, tvShows, keyword, onChange, onSubmit }) => (
                   poster={movie.poster_path}
                   title={movie.title}
                   vote={movie.vote_average}
+                  isMovie={true}
                 />
               ))
             )}

@@ -2,10 +2,16 @@ import axios from "axios";
 
 const TMDB_KEY = "22152b6831a33bb530b4d8204ab17873";
 const LAN = "ko-KR";
+const VIDEO = "videos";
 
 const makeRequest = (path, params) =>
   axios.get(`https://api.themoviedb.org/3${path}`, {
-    params: { api_key: TMDB_KEY, language: LAN, ...params },
+    params: {
+      api_key: TMDB_KEY,
+      language: LAN,
+      append_to_response: VIDEO,
+      ...params,
+    },
   });
 
 const getAnything = async (path, params = {}) => {

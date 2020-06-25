@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
 
 const GoToDetail = ({
   id,
@@ -11,22 +11,22 @@ const GoToDetail = ({
   overview,
   releaseDate,
   backgroundImage,
+  isMovie,
   children,
 }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() =>
-        navigation.navigate("Detail", {
-          id,
-          title,
-          vote,
-          poster,
-          overview,
-          releaseDate,
-          backgroundImage,
-        })
-      }
+      onPress={navigation.navigate("Detail", {
+        id,
+        title,
+        vote,
+        poster,
+        overview,
+        releaseDate,
+        backgroundImage,
+        isMovie,
+      })}
     >
       {children}
     </TouchableOpacity>
@@ -41,6 +41,7 @@ GoToDetail.propTypes = {
   overview: PropTypes.string,
   releaseDate: PropTypes.string,
   backgroundImage: PropTypes.string,
+  isMovie: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 

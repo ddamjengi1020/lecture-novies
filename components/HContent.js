@@ -33,7 +33,15 @@ const ReleaseDate = styled.Text`
   margin-bottom: 5px;
 `;
 
-const HContent = ({ id, title, vote, poster, overview, releaseDate }) => (
+const HContent = ({
+  id,
+  title,
+  vote,
+  poster,
+  overview,
+  releaseDate,
+  isMovie,
+}) => (
   <GoToDetail
     id={id}
     title={title}
@@ -41,6 +49,7 @@ const HContent = ({ id, title, vote, poster, overview, releaseDate }) => (
     overview={overview}
     releaseDate={releaseDate}
     poster={poster}
+    isMovie={isMovie}
   >
     <Container>
       <Poster url={poster} />
@@ -61,6 +70,7 @@ HContent.propTypes = {
   poster: PropTypes.string,
   overview: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
+  isMovie: PropTypes.bool,
 };
 
 export default HContent;

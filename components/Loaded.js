@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { ScrollView, ActivityIndicator, RefreshControl } from "react-native";
 import PropTypes from "prop-types";
 
@@ -33,7 +33,7 @@ const Loaded = ({ refreshFn, loading, children }) => {
 Loaded.propTypes = {
   loading: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  refreshFn: PropTypes.func.isRequired,
+  refreshFn: PropTypes.func,
 };
 
 export default Loaded;
