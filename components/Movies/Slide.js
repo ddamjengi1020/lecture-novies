@@ -13,7 +13,7 @@ const { height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
   position: relative;
   width: 100%;
-  height: ${HEIGHT / 3.5};
+  height: ${HEIGHT / 3}px;
 `;
 const BgImage = styled.Image`
   width: 100%;

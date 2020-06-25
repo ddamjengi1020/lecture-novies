@@ -4,7 +4,7 @@ import Loaded from "../../components/Loaded";
 import Poster from "../../components/Poster";
 import { ScrollView, Dimensions } from "react-native";
 import { apiImage } from "../../api";
-import { format } from "../../utils";
+import { format, trimText } from "../../utils";
 import ContentsTitle from "../../components/ContentsTitle";
 import Vote from "../../components/Vote";
 
@@ -42,6 +42,9 @@ const Data = styled.View`
   padding: 40px;
   opacity: 0.7;
 `;
+const DataContent = styled.View`
+  margin-vertical: 10px;
+`;
 const DataText = styled.Text`
   color: white;
 `;
@@ -69,22 +72,28 @@ export default ({ loading, result }) => {
           </HeaderContent>
         </Header>
         <Data>
-          <ContentsTitle title={"줄거리"} />
-          <DataText>{result.overview}</DataText>
+          <DataContent>
+            <ContentsTitle title={"줄거리"} />
+            <DataText>
+              {result.overview
+                ? result.overview
+                : "한국어로 된 줄거리가 등록되어 있지 않습니다."}
+            </DataText>
+          </DataContent>
           {result.release_date && (
-            <>
+            <DataContent>
               <ContentsTitle title={"개봉일"} />
               <DataText>{format(result.release_date)}</DataText>
-            </>
+            </DataContent>
           )}
           {result.first_air_date && (
-            <>
+            <DataContent>
               <ContentsTitle title={"첫 방송일"} />
               <DataText>{format(result.first_air_date)}</DataText>
-            </>
+            </DataContent>
           )}
           {result.genres && (
-            <>
+            <DataContent>
               <ContentsTitle title={"장르"} />
               <DataText>
                 {result.genres.map((genre, i) =>
@@ -93,10 +102,10 @@ export default ({ loading, result }) => {
                     : `${genre.name}, `
                 )}
               </DataText>
-            </>
+            </DataContent>
           )}
           {result.seasons && (
-            <>
+            <DataContent>
               <ContentsTitle title={"시즌 정보"} />
               <ScrollView
                 horizontal={true}
@@ -105,11 +114,11 @@ export default ({ loading, result }) => {
                 {result.seasons.map((s) => (
                   <PosterContainer key={s.id}>
                     <Poster url={s.poster_path} />
-                    <PosterName>{s.name}</PosterName>
+                    <PosterName>{trimText(s.name, 6)}</PosterName>
                   </PosterContainer>
                 ))}
               </ScrollView>
-            </>
+            </DataContent>
           )}
         </Data>
       </Container>

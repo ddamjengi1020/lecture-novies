@@ -17,16 +17,18 @@ const GoToDetail = ({
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={navigation.navigate("Detail", {
-        id,
-        title,
-        vote,
-        poster,
-        overview,
-        releaseDate,
-        backgroundImage,
-        isMovie,
-      })}
+      onPress={() =>
+        navigation.navigate("Detail", {
+          id,
+          title,
+          vote,
+          poster,
+          overview,
+          releaseDate,
+          backgroundImage,
+          isMovie,
+        })
+      }
     >
       {children}
     </TouchableOpacity>

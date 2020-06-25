@@ -7,7 +7,6 @@ const Stack = createStackNavigator();
 
 export default () => (
   <Stack.Navigator
-    mode="card"
     screenOptions={{
       headerStyle: {
         backgroundColor: "black",

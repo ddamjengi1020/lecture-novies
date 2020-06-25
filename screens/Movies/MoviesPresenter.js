@@ -12,7 +12,7 @@ const { height: HEIGHT } = Dimensions.get("window");
 
 const SliderContainer = styled.View`
   width: 100%;
-  height: ${HEIGHT / 3.5};
+  height: ${HEIGHT / 3}px;
 `;
 const SectionContainer = styled.View`
   padding: 20px;

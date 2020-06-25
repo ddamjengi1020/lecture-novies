@@ -5,6 +5,7 @@ import { trimText } from "../utils";
 import GoToDetail from "./GoToDetail";
 import Poster from "./Poster";
 import Vote from "./Vote";
+import { View, Text } from "react-native";
 
 const Container = styled.View`
   margin-right: 14px;
@@ -26,7 +27,7 @@ const VContent = ({ id, poster, title, vote, isMovie }) => (
     <Container>
       <Poster url={poster} />
       <Title>{trimText(title, 6)}</Title>
-      {vote && <Vote vote={vote} />}
+      <Vote vote={vote} />
     </Container>
   </GoToDetail>
 );
