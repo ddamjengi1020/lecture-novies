@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
-import { TouchableOpacity } from "react-native";
 import { trimText } from "../utils";
+import GoToDetail from "./GoToDetail";
 import Poster from "./Poster";
 import Vote from "./Vote";
 
@@ -16,13 +16,13 @@ const Title = styled.Text`
 `;
 
 const VContent = ({ id, poster, title, vote }) => (
-  <TouchableOpacity>
+  <GoToDetail id={id} poster={poster} title={title} vote={vote}>
     <Container>
       <Poster url={poster} />
       <Title>{trimText(title, 8)}</Title>
       <Vote vote={vote} />
     </Container>
-  </TouchableOpacity>
+  </GoToDetail>
 );
 
 VContent.propTypes = {

@@ -7,12 +7,14 @@ const Stack = createStackNavigator();
 
 export default () => (
   <Stack.Navigator
+    mode="card"
     screenOptions={{
       headerStyle: {
         backgroundColor: "black",
         borderBottomColor: "black",
         shadowOffset: { height: 0 },
       },
+      headerBackTitleVisible: false,
       headerTintColor: "white",
       headerTitleAlign: "center",
     }}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { movieApi } from "../../api";
 import MoviesPresenter from "./MoviesPresenter";
 
-export default ({ navigation }) => {
+export default () => {
   const [movies, setMovies] = useState({
     loading: true,
     nowPlaying: [],

@@ -7,6 +7,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { trimText } from "../../utils";
 import Poster from "../Poster";
 import Vote from "../Vote";
+import GoToDetail from "../GoToDetail";
 
 const { height: HEIGHT } = Dimensions.get("window");
 
@@ -65,11 +66,18 @@ const Slide = ({ id, title, backgroundImage, vote, overview, poster }) => {
           <Title>{trimText(title, 13)}</Title>
           <Vote vote={vote} />
           <Overview>{trimText(overview, 70)}</Overview>
-          <TouchableOpacity>
+          <GoToDetail
+            id={id}
+            title={title}
+            backgroundImage={backgroundImage}
+            vote={vote}
+            overview={overview}
+            poster={poster}
+          >
             <Button>
               <ButtonText>더보기</ButtonText>
             </Button>
-          </TouchableOpacity>
+          </GoToDetail>
         </Data>
       </Content>
     </Container>

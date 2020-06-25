@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
 import { trimText } from "../utils";
-import { TouchableOpacity } from "react-native";
+import GoToDetail from "./GoToDetail";
 import Poster from "./Poster";
 import Vote from "./Vote";
 
@@ -34,7 +34,14 @@ const ReleaseDate = styled.Text`
 `;
 
 const HContent = ({ id, title, vote, poster, overview, releaseDate }) => (
-  <TouchableOpacity>
+  <GoToDetail
+    id={id}
+    title={title}
+    vote={vote}
+    overview={overview}
+    releaseDate={releaseDate}
+    poster={poster}
+  >
     <Container>
       <Poster url={poster} />
       <Content>
@@ -44,7 +51,7 @@ const HContent = ({ id, title, vote, poster, overview, releaseDate }) => (
         <Overview>{trimText(overview, 90)}</Overview>
       </Content>
     </Container>
-  </TouchableOpacity>
+  </GoToDetail>
 );
 
 HContent.propTypes = {
