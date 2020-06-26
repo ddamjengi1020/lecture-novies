@@ -18,11 +18,13 @@ const Loaded = ({ refreshFn, loading, children }) => {
         justifyContent: loading ? "center" : "flex-start",
       }}
       refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          tintColor={"white"}
-        />
+        refreshFn ? (
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={"white"}
+          />
+        ) : null
       }
     >
       {loading ? <ActivityIndicator color="white" size="small" /> : children}

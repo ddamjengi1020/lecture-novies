@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components/native";
 import Loaded from "../../components/Loaded";
 import Poster from "../../components/Poster";
@@ -6,6 +6,7 @@ import { ScrollView, Dimensions } from "react-native";
 import { apiImage } from "../../api";
 import { format, trimText } from "../../utils";
 import ContentsTitle from "../../components/ContentsTitle";
+import YoutubePlayer from "react-native-youtube-iframe";
 import Vote from "../../components/Vote";
 
 const { height: HEIGHT } = Dimensions.get("window");
@@ -59,7 +60,7 @@ const PosterName = styled.Text`
 
 export default ({ loading, result }) => {
   return (
-    <Loaded loading={loading}>
+    <Loaded loading={loading} refreshFn={null}>
       <Container showsVerticalScrollIndicator={false}>
         <Header>
           <BgImage source={{ uri: apiImage(result.backgroundImage) }} />
@@ -118,6 +119,37 @@ export default ({ loading, result }) => {
                   </PosterContainer>
                 ))}
               </ScrollView>
+            </DataContent>
+          )}
+          {result.created_by && result.created_by.length > 0 && (
+            <DataContent>
+              <ContentsTitle title={"제작자"} />
+              <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              >
+                {result.created_by.map((creator) => (
+                  <PosterContainer key={creator.id}>
+                    <Poster url={creator.profile_path} />
+                    <PosterName style={{ width: 80 }}>
+                      {creator.name}
+                    </PosterName>
+                  </PosterContainer>
+                ))}
+              </ScrollView>
+            </DataContent>
+          )}
+          {result.videos && result.videos.results[0] && (
+            <DataContent>
+              <ContentsTitle title={"예고편"} />
+              <YoutubePlayer
+                height={200}
+                width={300}
+                videoId={result.videos.results[0].key}
+                onError={(e) => console.log(e)}
+                volume={40}
+                playbackRate={1}
+              />
             </DataContent>
           )}
         </Data>
