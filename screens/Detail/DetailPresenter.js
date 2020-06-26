@@ -13,7 +13,7 @@ const { height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
 const Header = styled.View`
   width: 100%;
-  height: ${HEIGHT / 3};
+  height: ${HEIGHT / 3}px;
   justify-content: flex-end;
 `;
 const BgImage = styled.Image`

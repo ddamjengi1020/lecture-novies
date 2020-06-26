@@ -5,10 +5,10 @@ import { Platform } from "react-native";
 
 const TextInput = styled.TextInput`
   background-color: white;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 70%;
-  padding: 5px 10px;
-  font-size: 17px;
+  padding: 10px 15px;
+  font-size: 15px;
   ${(props) => (props.platform ? "outline-width: 0" : "")};
 `;
 

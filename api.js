@@ -32,7 +32,7 @@ export const movieApi = {
   upcoming: () => getAnything("/movie/upcoming"),
   search: (query) => getAnything("/search/movie", { query }),
   movie: (id) => getAnything(`/movie/${id}`),
-  discover: () => getAnything("/discover/movie"),
+  discover: (page) => getAnything("/discover/movie", { page }),
 };
 
 export const tvShowApi = {
