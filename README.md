@@ -13,5 +13,10 @@ _Organize pages using React Navigation_
 - [x] Movies
 - [x] TVShows
 - [x] Search
-- [] Detail
-- [] Discover
+- [x] Detail
+- [x] Favs
+
+![movies](https://front-juno.github.io/images-fonts/images/github/novies/novies-movies.png)
+![tvshows](https://front-juno.github.io/images-fonts/images/github/novies/novies-tvshows.png)
+![search](https://front-juno.github.io/images-fonts/images/github/novies/novies-search.png)
+![discover](https://front-juno.github.io/images-fonts/images/github/novies/novies-discover.png)
