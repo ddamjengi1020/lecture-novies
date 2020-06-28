@@ -1,13 +1,14 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components/native";
 import Loaded from "../../components/Loaded";
 import Poster from "../../components/Poster";
-import { ScrollView, Dimensions } from "react-native";
+import { ScrollView, Dimensions, Platform, Linking } from "react-native";
 import { apiImage } from "../../api";
 import { format, trimText } from "../../utils";
 import ContentsTitle from "../../components/ContentsTitle";
 import YoutubePlayer from "react-native-youtube-iframe";
 import Vote from "../../components/Vote";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const { height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
@@ -57,8 +58,17 @@ const PosterName = styled.Text`
   font-size: 13px;
   text-align: center;
 `;
+const ImdbLink = styled.Text`
+  font-weight: bolder;
+  background-color: #f9ca24;
+  padding: 4px 8px;
+  border-radius: 5px;
+  width: fit-content;
+  font-size: 13px;
+`;
 
-export default ({ loading, result }) => {
+export default ({ loading, result, openUrlFn }) => {
+  console.log(result);
   return (
     <Loaded loading={loading} refreshFn={null}>
       <Container showsVerticalScrollIndicator={false}>
@@ -81,6 +91,12 @@ export default ({ loading, result }) => {
                 : "한국어로 된 줄거리가 등록되어 있지 않습니다."}
             </DataText>
           </DataContent>
+          {result.runtime && (
+            <DataContent>
+              <ContentsTitle title={"상영시간"} />
+              <DataText>{`${result.runtime}분`}</DataText>
+            </DataContent>
+          )}
           {result.release_date && (
             <DataContent>
               <ContentsTitle title={"개봉일"} />
@@ -139,19 +155,28 @@ export default ({ loading, result }) => {
               </ScrollView>
             </DataContent>
           )}
-          {result.videos && result.videos.results[0] && (
+          {result.imdb_id && (
             <DataContent>
-              <ContentsTitle title={"예고편"} />
-              <YoutubePlayer
-                height={200}
-                width={300}
-                videoId={result.videos.results[0].key}
-                onError={(e) => console.log(e)}
-                volume={40}
-                playbackRate={1}
-              />
+              <ContentsTitle title={"IMDB 링크"} />
+              <TouchableOpacity onPress={() => openUrlFn(result.imdb_id)}>
+                <ImdbLink>IMDB</ImdbLink>
+              </TouchableOpacity>
             </DataContent>
           )}
+          {(result.videos?.results?.length > 0 && Platform.OS === "ios") ||
+            (Platform.OS === "android" && (
+              <DataContent>
+                <ContentsTitle title={"예고편"} />
+                <YoutubePlayer
+                  height={200}
+                  width={300}
+                  videoId={result.videos.results[0].key}
+                  onError={(e) => console.log(e)}
+                  volume={40}
+                  playbackRate={1}
+                />
+              </DataContent>
+            ))}
         </Data>
       </Container>
     </Loaded>

@@ -7,3 +7,5 @@ export const format = (date) =>
     month: "long",
     day: "numeric",
   });
+
+export const imdbLink = (id) => `https://www.imdb.com/title/${id}`;

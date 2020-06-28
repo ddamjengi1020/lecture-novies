@@ -1,6 +1,8 @@
 import React, { useLayoutEffect, useState, useEffect } from "react";
 import DetailPresenter from "./DetailPresenter";
+import * as WebBrowser from "expo-web-browser";
 import { movieApi, tvShowApi } from "../../api";
+import { imdbLink } from "../../utils";
 
 export default ({
   navigation,
@@ -37,11 +39,13 @@ export default ({
       },
     });
   };
+  const openUrl = async (url) =>
+    await WebBrowser.openBrowserAsync(imdbLink(url));
   useEffect(() => {
     getData();
   }, [id]);
   useLayoutEffect(() => {
     navigation.setOptions({ title: title });
   }, []);
-  return <DetailPresenter {...detail} />;
+  return <DetailPresenter {...detail} openUrlFn={openUrl} />;
 };
